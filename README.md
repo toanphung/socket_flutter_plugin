@@ -3,6 +3,7 @@
 Support both Android and iOS
 
 ## Example
+```
 import 'package:socket_flutter_plugin/socket_flutter_plugin.dart';
 class MyApp extends StatefulWidget {
   @override
@@ -50,3 +51,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+```
