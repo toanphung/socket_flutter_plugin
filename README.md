@@ -1,6 +1,6 @@
 # socket_flutter_plugin
 
-A new Flutter plugin.
+Support both Android and iOS
 
 ## Getting Started
 
