@@ -93,11 +93,7 @@ public class SocketFlutterPlugin implements MethodCallHandler {
       new Handler(Looper.getMainLooper()).post(new Runnable() {
         @Override
         public void run() {
-          String data;
-          if(args.length > 1){
-            data = args[1].toString();
-          }
-          data = args[0].toString();
+          String data = args[args.length-1].toString();
           Log.d("SocketIO ", "Received " + data);
           Map<String, String> myMap= new HashMap<String, String>();
           myMap.put("message", data);
