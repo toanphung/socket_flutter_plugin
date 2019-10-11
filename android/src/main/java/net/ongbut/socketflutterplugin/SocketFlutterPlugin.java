@@ -1,5 +1,7 @@
 package net.ongbut.socketflutterplugin;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import java.net.URISyntaxException;
@@ -88,11 +90,16 @@ public class SocketFlutterPlugin implements MethodCallHandler {
   private Emitter.Listener onNewMessage = new Emitter.Listener() {
     @Override
     public void call(final Object... args) {
-        String data = (String)args[0];
-        Log.d("SocketIO ", "Received " + data);
-        Map<String, String> myMap= new HashMap<String, String>();
-        myMap.put("message", data);
-        channel.invokeMethod("received", myMap);
+      new Handler(Looper.getMainLooper()).post(new Runnable() {
+        @Override
+        public void run() {
+          String data = args[args.length-1].toString();
+          Log.d("SocketIO ", "Received " + data);
+          Map<String, String> myMap= new HashMap<String, String>();
+          myMap.put("message", data);
+          channel.invokeMethod("received", myMap);
+        };
+      });
     }
   };
 }
